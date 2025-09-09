@@ -1,0 +1,105 @@
+﻿<button type="button" class="navbar-brand" style="background:none;border: none;" data-bs-toggle="modal" data-bs-target="#myModal">
+    <i class="material-icons" style="font-size:36px">apps</i>
+</button>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">  Applications </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="" class="btn text-danger">
+                            <i class="fa fa-dashboard" style="font-size:36px"></i>
+                            <br>
+                            Dashboard
+                        </a>
+                        <br><br>
+                    </div>
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="MyRepository" asp-area="DMS" class="btn text-primary">
+                            <i class="material-icons" style="font-size:36px">create_new_folder</i>
+                            <br>
+                            Documents
+                        </a>
+                        <br><br>
+                    </div>
+                   
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="CMS" class="btn text-info">
+                            <i class="material-icons" style="font-size:36px">mail</i>
+                            <br>
+                            Correspondence
+                        </a>
+                        <br><br>
+                    </div>
+                    
+                  
+                    
+
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="Archive" class="btn text-success">
+                            <i class="material-icons" style="font-size:36px">cloud_upload</i>
+                            <br>
+                            Operation
+                        </a>
+                        <br><br>
+                    </div>
+
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="BPM" class="btn text-warning">
+                            <i class="material-icons" style="font-size:36px">low_priority</i>
+                            <br>
+                            Business Process
+                        </a>
+                        <br><br>
+                    </div>
+
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="CRM" class="btn" style="color:mediumpurple;">
+                            <i class="material-icons" style="font-size:36px">headset_mic </i>
+                            <br>
+                            CRM
+                        </a>
+                        <br><br>
+                    </div>
+
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="HR" class="btn" style="color:hotpink;">
+                            <i class="material-icons" style="font-size:36px">supervisor_account </i>
+                            <br>
+                            HR
+                        </a>
+                        <br><br>
+                    </div>
+
+                   
+
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="Profile" class="btn" style="color:maroon;">
+                            <i class="material-icons" style="font-size:36px">assignment_ind </i>
+                            <br>
+                            Profile
+                        </a>
+                        <br><br>
+                    </div>
+
+
+                    <div class="col-4 text-center">
+                        <a asp-action="Index" asp-controller="Home" asp-area="scp" class="btn">
+                            <i class="material-icons" style="font-size:36px">settings </i>
+                            <br>
+                            Admin
+                        </a>
+                        <br><br>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

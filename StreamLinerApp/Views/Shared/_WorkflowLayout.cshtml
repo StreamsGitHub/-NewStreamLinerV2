@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream Liner - Workflow</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Style.css" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <style>
+        .bglf {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0 !important;
+            border-bottom-width: 5px;
+            border-bottom-color: #f6935e;
+            border-bottom-style: solid;
+            background-color: #002135;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/sidebars.css">
+</head>
+<body>
+
+    <partial name="_HeaderApp" />
+    <main>
+        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap" /></svg>
+                <span class="fs-5 fw-semibold">Collapsible</span>
+            </a>
+            <!--
+
+
+
+
+            -->
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1"><a href="#" class="btn   align-items-center"> <i class="material-icons">star</i> My Tasks</a></li>
+                <li class="mb-1"><a href="#" class="btn   align-items-center"> <i class="material-icons">star</i> My Team</a></li>
+                <li class="mb-1"><a href="#" class="btn  align-items-center"> <i class="material-icons">brush</i>  Design</a></li>
+                <li class="mb-1"><a href="#" class="btn   align-items-center"> <i class="material-icons">insert_invitation</i> Records Management</a></li>
+                <li class="mb-1"><a href="#" class="btn   align-items-center"> <i class="material-icons">delete</i> Recycle Bin</a></li>
+
+            </ul>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="container">
+
+            @RenderBody()
+
+
+        </div>
+    </main>
+
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/sidebars.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

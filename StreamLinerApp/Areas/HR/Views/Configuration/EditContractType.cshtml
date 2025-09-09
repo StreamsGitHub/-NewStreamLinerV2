@@ -1,0 +1,27 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRContractType
+
+@{
+    ViewData["Title"] = "Edit Contract Type";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditContractType">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HRContractTypeId" />
+            <div class="form-group">
+                <label asp-for="HRContractTypeName" class="control-label"></label>
+                <input asp-for="HRContractTypeName" class="form-control" />
+                <span asp-validation-for="HRContractTypeName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" /> |
+                <a asp-action="ContractTypes" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+

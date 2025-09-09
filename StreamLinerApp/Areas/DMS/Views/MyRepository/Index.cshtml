@@ -1,0 +1,31 @@
+﻿@model StreamLinerViewModelLayer.ModelDTO.DirectoryViewModel
+
+@{
+    ViewData["Title"] = "Folder";
+}
+
+<br />
+<h2 class="text-primary">  <i class="fa fa-hdd-o"></i>   Repositories   </h2>
+<hr />
+
+
+<div class="row ">
+    <div class="col-12 p-4">
+       @*  <h6>@ViewData["FolderPath"] </h6> *@
+        <br />
+        <div class="row">
+            @foreach (var folder in Model.SubDirectories)
+            {
+                <div class="col-3 text-center">
+                    <a class="btn" asp-action="Folder" asp-controller="MyRepository" asp-area="DMS" asp-route-id="@folder.FolderId">
+                        <img src="~/img/ico/Disk.png" alt="Alternate Text" width="80px" />
+                        <br />
+                        <h4> @folder.FolderName  </h4>
+                    </a>
+                </div>
+            }
+        </div>
+    
+    </div>
+
+</div>

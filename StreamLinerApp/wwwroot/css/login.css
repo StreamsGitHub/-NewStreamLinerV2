@@ -1,0 +1,36 @@
+﻿body {
+    background-color: #EBEFF8;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    background-color: #004a7c;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+.login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-logo {
+    color: #f36f21;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+}

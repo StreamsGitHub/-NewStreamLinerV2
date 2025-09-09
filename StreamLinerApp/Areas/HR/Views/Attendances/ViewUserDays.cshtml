@@ -1,0 +1,106 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRAttend>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_Attend" />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="ViewUserDays">
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="control-label">Employee</label>
+                        <select name="PartnerId" class="form-control select2" asp-items="ViewBag.PartnerId">
+                            <option value="0" data=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="control-label">From</label>
+                        <input name="FromDate" class="form-control" type="date" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="control-label">To</label>
+                        <input name="ToDate" class="form-control" type="date" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="control-label text-white"> . </label>
+                        <input type="submit" value="view " class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <h3>  @ViewData["date"] </h3>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+ 
+
+<br />
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Employee
+                </th>
+
+                <th>
+                    Check In
+                </th>
+                <th>
+                    Check Out
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Convert.ToDateTime(item.CheckDate).ToString("yyyy-MM-dd")
+                    </td>
+                    <td>
+                        @item.Partner.FirstName   @item.Partner.MiddleName
+                    </td>
+
+                    <td>
+                        @if (item.CheckTypeIn > 0)
+                        {
+                            <i class="@item.IconIn" style="font-size:16px;"></i>
+                            @Convert.ToDateTime(item.CheckIn).ToShortTimeString()
+                        }
+                        else
+                        {
+                            <strong class="text-danger"> Absent </strong>
+                        }
+                    </td>
+                    <td>
+                        @if (item.CheckTypeOut > 0)
+                        {
+                            <i class="@item.IconOut" style="font-size:16px;"></i>
+                            @Convert.ToDateTime(item.CheckOut).ToShortTimeString()
+                        }
+                        else
+                        {
+                            <strong class="text-danger"> Absent </strong>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

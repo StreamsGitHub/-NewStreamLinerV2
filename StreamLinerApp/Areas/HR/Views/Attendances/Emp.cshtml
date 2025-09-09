@@ -1,0 +1,72 @@
+﻿@model StreamLinerViewModelLayer.HRViewModel.ShowUploadedViewModel
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_Attend" />
+
+
+<div class="col-md-12" style="height:700PX;width:100%;overflow:scroll;">
+
+
+    <table class="table table-hover text-nowrap">
+        <thead>
+            <tr>
+                <th>AC-No</th>
+                <th>Name</th>
+                <th>No</th>
+                <th>Date/Time</th>
+                <th>Status</th>
+                <th>New State</th>
+                <th>Exception</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.FingerPrint.Count(); i++)
+            {
+                <tr>
+
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].ACNo">
+                    </td>
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].Name">
+                    </td>
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].Number">
+                    </td>
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].DateAndTime">
+                    </td>
+                    @*   <td>
+                <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].Status">
+                </td>*@
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].Status">
+                    </td>
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].NewState">
+                    </td>
+                    @* <td>
+                <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].Workcode">
+                </td>*@
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].Exception">
+                    </td>
+                    <td>
+                        <input readonly="readonly" class="control-label" style="border:none;" asp-for="@Model.FingerPrint[i].Operation">
+                    </td>
+                    @*     <td>
+                <input value="Return To Marketer" type="submit" asp-action="ReturnToMarketer" asp-route-id="@Model.ResourcePartner[i].PartnerId" method="post" class="btn btn-warning" />
+                </td>
+                *@
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+
+</div>

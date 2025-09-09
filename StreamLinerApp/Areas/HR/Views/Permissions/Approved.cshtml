@@ -1,0 +1,85 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRPermission>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+@* <p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p> *@
+
+<partial name="_PermissionReview" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <i class="fa fa-hourglass-1" style="font-size:16pt"></i>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermissionName)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.PermissionState == 1)
+                    {
+                        <i class="fa fa-hourglass-1  text-warning" style="font-size:16pt"></i>
+                    }
+                    else if (item.PermissionState == 2)
+                    {
+                        <i class="fa fa-hourglass-2  text-info" style="font-size:16pt"></i>
+                    }
+                    else if (item.PermissionState == 3)
+                    {
+                        <i class="fa fa-check text-success" style="font-size:16pt"></i>
+                    }
+                    else if (item.PermissionState == 4 || item.PermissionState == 5)
+                    {
+                        <i class="fa fa-times text-danger" style="font-size:16pt"></i>
+                    }
+                    else if (item.PermissionState == 0)
+                    {
+                        <i class="fa fa-archive" style="font-size:16pt"></i>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PermissionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reason)
+                </td>
+                <td>
+                    @if (item.PermissionState == 2)
+                    {
+                        <a asp-action="Permission" asp-route-id="@item.HRPermissionId" class="btn btn-info">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

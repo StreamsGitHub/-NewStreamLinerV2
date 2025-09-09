@@ -1,0 +1,395 @@
+﻿@model StreamLinerViewModelLayer.ModelDTO.DirectoryViewModel
+
+@{
+    ViewData["Title"] = "Folder";
+
+}
+<style>
+    .context-menu {
+        position: absolute;
+        z-index: 1000;
+        background-color: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        display: none;
+        padding: 0.5rem 0;
+        list-style: none;
+        width: 150px;
+    }
+
+        .context-menu li {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+            .context-menu li:hover {
+                background-color: #f3f4f6;
+            }
+
+    hr.solid {
+        border-top: 1px solid #bbb;
+        margin: 0 0;
+    }
+</style>
+<br />
+<div class="row">
+    <div class="col-8">
+
+        <a asp-action="Folder" asp-route-id="@ViewData["ParentId"]" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Go To Back</a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newfolder">
+            <i class="fa fa-plus"></i> Create Folder
+        </button>
+        <div class="modal" id="newfolder">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" asp-action="CreateFolder">
+                        <input type="text" value="@ViewData["FolderId"]" class="form-control" id="ParentId" name="ParentId" hidden="hidden">
+                        <input type="text" value="@ViewData["FolderPath"]" class="form-control" id="FolderPath" name="FolderPath" hidden="hidden">
+                        <div class="modal-body">
+                            <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter folder name" required>
+                            <br />
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadfile">
+            <i class="fa fa-upload"></i> Upload File
+        </button>
+        <div class="modal" id="uploadfile">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" asp-action="UploadFile" enctype="multipart/form-data">
+                        <input type="text" value="@ViewData["FolderId"]" class="form-control" id="ParentId" name="ParentId" hidden="hidden">
+                        <div class="modal-body">
+                            <br />
+                            <div class="mb-3">
+                                <label for="title" class="form-label">File Name</label>
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Enter Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>MetaData</label>
+                                <select name="MetaData" class="form-select">
+                                    <option value="0">Choose Template</option>
+
+                                </select>
+                            </div>
+                            <br />
+                            <input type="file" id="document" name="document" required />
+                            <br />
+                            <br />
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn btn-outline-primary"><i class="fa fa-file-excel-o" style="font-size:16px"></i> Bulk Upload Files</a>
+
+
+        <div class="modal" id="renamefolder">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" asp-action="RenameFolder">
+                        <input type="text" class="form-control" id="NewFolderId" name="NewFolderId" hidden="hidden">
+                        <div class="modal-body">
+                            <h4>Rename</h4>
+                            <hr />
+                            <input type="text" class="form-control" id="NewFolderName" name="NewFolderName" placeholder="Enter new folder name" required>
+                            <br />
+                            <button type="submit" class="btn btn-primary">Rename</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="deletefolder">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" asp-action="DeleteFolder">
+                        <input type="text" class="form-control" id="deletefolderid" name="deletefolderid">
+                        <div class="modal-body">
+                            <h4>Delete ?</h4>
+                            <hr />
+                            <p> Are you sure you want to Delete <span id="deletefoldername" style="color:var(--bs-danger)"></span> Folder  </p>
+                            <br />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="direction:ltr;">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <i class="fa fa-key"></i> Show Security
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header" style="direction:ltr">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Access Rights</h5>
+                <button type="button" class="btn-close text-reset" style="text-align:right" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" style="direction:ltr">
+                <div>
+                    Root @ViewData["FolderPath"]
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Users and Groups</label>
+                            <select class="form-control select2" id="userId" asp-items="ViewBag.UserId">
+                                <option value="0">Choose User</option>
+
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="row mt-3" style="border:2px solid #e7e0d6 ;border-radius:5px;height:240px;overflow-y:scroll;">
+                    <div class="bg-light">
+                        <p><b>View</b></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label"> Browse</label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label"> Read</label>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label">   See Annotations</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><b>Add</b></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label">  Create Documents</label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label">  Create Folders</label>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <p><b>Modify</b></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label"> Modify Contents</label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label"> Rename</label>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label">  Annotate</label>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label">   Write Metadata</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><b>Delete</b></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label">  Delete Folder</label>
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label">  Delete Document</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><b>Manage Security</b></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label"> Read Security</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label"> Write Security </label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    <label class="form-label"> Change Owner  </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-10">
+
+                        <select class="form-select select2" id="folderPermissionId" asp-items="ViewBag.PermissionsScopeId">
+                            <option value="0">Scope</option>
+
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button id="sendDataButton" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <input type="text" name="name" id="folderId" value="@ViewData["FolderId"]" class="form-control" hidden="hidden" />
+                </div>
+                <hr />
+                <div class="row mt-3" id="tableContainer">
+                    @await Html.PartialAsync("_MyTablePartial", Model.FolderUserPermissionViewModel)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-12 p-4">
+        <h6>@ViewData["FolderPath"] </h6>
+        <br />
+        <div class="row">
+            @if (Model.SubDirectories.Count() == 0)
+            {
+                <div class="col-4">
+                </div>
+                <div class="col-4 text-center">
+                    <img src="~/img/ico/empty-folder.png" alt="No Folders" style="width:150px;height:150px;" />
+                    <br />
+                  @*   <h4>No Folders Found! </h4> *@
+                </div>
+                <div class="col-4">
+                </div>
+
+            }
+
+            @for (int i = 0; i < Model.SubDirectories.Count(); i++)
+            {
+                string checkId = $"check{i}"; // Create a unique ID for each checkbox
+                                              // Access the current folder item using the index 'i'
+                var folder = Model.SubDirectories[i];
+
+                <div class="col-2 text-center folder-item col-span-1 text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer right-click-item"
+                     data-folder-id="@folder.FolderId"
+                     data-folder-name="@folder.FolderName">
+
+                    <a class="btn double-click-link"
+                       asp-action="Folder"
+                       asp-controller="MyRepository"
+                       asp-area="DMS"
+                       asp-route-id="@folder.FolderId">
+                        <img src="~/img/ico/Folder.png" alt="Folder Icon" />
+                        <br />
+                        <p> @folder.FolderName </p>
+                    </a>
+                </div>
+            }
+
+        </div>
+        <br />
+        <hr />
+        <div class="row">
+            @if (Model.SubFiles.Count() == 0)
+            {
+                <div class="col-4">
+                </div>
+                <div class="col-4 text-center">
+                    <img src="~/img/ico/WXP_Illustration.png" alt="No Folders"  width="150px" />
+                    <br />
+                    <br />
+                    <h4>No Files Found! </h4>
+                </div>
+                <div class="col-4">
+                </div>
+
+            }
+            @for (int i = 0; i < Model.SubFiles.Count(); i++)
+            {
+                var file = Model.SubFiles[i];
+
+                <div class="col-2 text-center">
+                    <a class="btn" href="#">
+                        <img src="~/img/ico/docx.png" alt="Alternate Text" />
+                        <br /><br />
+                        <p> @file.DocumentName </p>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+<!-- The custom context menu -->
+<ul id="custom-context-menu" class="context-menu">
+    <li class="menu-item" data-action="open">Open</li>
+    <hr class="solid">
+    <li class="menu-item" data-action="download">Download</li>
+    <li class="menu-item" data-action="rename">Rename</li>
+    <li class="menu-item" data-action="delete">Delete</li>
+    <hr class="solid">
+    <li class="menu-item" data-action="share">Share</li>
+    <li class="menu-item" data-action="delete">Show Security</li>
+</ul>
+
+@section Scripts {
+
+    <script src="~/js/folderservicescript.js"></script>
+
+}

@@ -1,0 +1,34 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRVacationRule
+
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+
+<partial name="_ConfigurationMenu" />
+<br />
+<form asp-action="EditVacationRule">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VacationRuleId" />
+            <div class="form-group">
+                <label asp-for="VacationRuleName" class="control-label"></label>
+                <input asp-for="VacationRuleName" class="form-control" />
+                <span asp-validation-for="VacationRuleName" class="text-danger"></span>
+            </div>   <br />
+            <div class="form-group">
+                <label asp-for="VacationDesc" class="control-label"></label>
+                <input asp-for="VacationDesc" class="form-control" />
+                <span asp-validation-for="VacationDesc" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" /> |
+                <a asp-action="VacationRules" class="btn btn-dark">Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+

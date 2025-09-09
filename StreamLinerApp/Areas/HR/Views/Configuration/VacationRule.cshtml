@@ -1,0 +1,115 @@
+﻿@model StreamLinerViewModelLayer.HRViewModel.VacationRulesViewModel
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="invoice p-3 mb-3">
+                    <div class="row invoice-info">
+                        <div class="col-sm-4 invoice-col">
+                            @ViewData["CustomerName"]
+                            <address>
+                                Name :  @Model.HRVacationRule.VacationRuleName<br />
+                                Desc :  @Model.HRVacationRule.VacationDesc<br />
+
+                            </address>
+                        </div>
+                        <div class="col-sm-4 invoice-col text-right">
+                            <a class="btn btn-app" href="invoice-print.html" target="_blank">
+                                <i class="fa fa-print"></i> Print
+                            </a>
+                            <a class="btn btn-app" href="invoice-print.html" target="_blank">
+                                <i class="fa fa-download"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <th>Type</th>
+                                        <th>Leave Days</th>
+                                        <th style="width:200px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <form method="post" asp-action="AddVacationRuleLine">
+                                        <input name="id" type="hidden" value="@ViewData["VacationRuleId"]" />
+                                    <tr>
+                                        <td>
+                                            <select id="VacationTypeId" name="VacationTypeId" class="form-control select2" asp-items="ViewBag.VacationTypeId">
+                                                <option value="0"></option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input name="VacationDays" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-success">+</button>
+                                        </td>
+                                    </tr>
+                                    </form>
+                                    @foreach (var item in Model.HRVacationRuleLine)
+                                    {
+                                        <tr>
+                                            <td> @item.HRVacationType.VacationTypeName</td>
+                                            <td> @item.VacationStock</td>
+
+                                            <td>
+                                                <form asp-action="DeleteVacationRuleLine" asp-route-id="@item.VacationRuleLineId" method="post">
+                                                    <input type="submit" value="-" class="btn btn-danger" asp-action="DeleteVacationRuleLine" asp-route-id="@item.VacationRuleLineId" method="post" />
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="row no-print">
+                        <div class="col-2">
+                            <a class="btn btn-success btn-block" asp-action="Rules" role="button">Save</a>
+                        </div>
+
+                        <div class="col-2">
+                        </div>
+                        <div class="col-2">
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.invoice -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+    @* <script>
+    $(function () {
+    $("#VacationTypeId").change(function () {
+    $.ajax({
+    type: "Get",
+    url: "/StockDocuments/ShowPurchasesPrice?ProductId=" + $(this).val(),  //remember change the controller to your owns.
+    success: function (data) {
+    $("#PurchasePrice").("");
+    $("#PurchasePrice").val.(data);
+    },
+    error: function (response) {
+    console.log(response.responseText);
+    }
+    });
+    });
+    });
+    </script>*@
+
+</section>
+
+

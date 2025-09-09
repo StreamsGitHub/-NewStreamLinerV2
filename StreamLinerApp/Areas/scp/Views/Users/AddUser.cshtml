@@ -1,0 +1,237 @@
+﻿@model StreamLinerViewModelLayer.ModelDTO.userDto
+
+@{
+    ViewData["Title"] = "Users";
+}
+<br />
+<h3>Add User</h3>
+<form asp-action="AddUser" method="post" enctype="multipart/form-data">
+    <div class="row card-body p-4">
+        <div class="col-7 p-4">
+            <div class="row">
+                <div class="col-12">
+                    <h4>User Information</h4>
+                </div>
+                <hr />
+            </div>
+            @* Name *@
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            @* Conect *@
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="EmailAddress"></label>
+                        <input asp-for="EmailAddress" class="form-control" />
+                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <br />
+
+            @* Address *@
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="BirthDate"></label>
+                        <input asp-for="BirthDate" type="date" class="form-control" />
+                        <span asp-validation-for="BirthDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Address"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <br />
+            <hr />
+            <div class="row">
+                <div class="col-12">
+                    <h4>Employee Information</h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="DepartmentId"></label>
+                        <select asp-for="DepartmentId" class="form-select">
+                            <option value="0">Choose Department</option>
+                        </select>
+                        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="JobTitle"></label>
+                        <input asp-for="JobTitle" class="form-control" />
+                        <span asp-validation-for="JobTitle" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="ProfileImage"></label>
+                <input asp-for="ProfileImage" type="file" class="form-control" />
+                <span asp-validation-for="ProfileImage" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="index" class="btn btn-secondary"> Back</a>
+            </div>
+        </div>
+        <div class="col-5  p-4 sysinfouser" >
+            <div class="row">
+                <div class="col-12">
+                    <h4>System Information</h4>
+                </div>
+                <hr />
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Volumequota"></label>
+                        <input asp-for="Volumequota" class="form-control text-center" type="number" value="0" />
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Maxquota"></label>
+                        <input asp-for="Maxquota" class="form-control text-center" type="number" value="0" />
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label asp-for="Role"></label>
+                        <select asp-for="Role" class="form-select">
+                            <option value="0">Choose User Type</option>
+                            <option value="1">Admin</option>
+                            <option value="2"> User </option>
+                            <option value="3"> Participant </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label asp-for="pwd">Password</label>
+                        <input asp-for="pwd" class="form-control text-center" value="@ViewData["pwd"]" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-12">
+                    <span asp-validation-for="Maxquota" class="text-danger"></span>
+                    <span asp-validation-for="Volumequota" class="text-danger"></span>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                    <span asp-validation-for="pwd" class="text-danger"></span>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-12">
+                    <h4>Access Right</h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-check">
+                        <input type="checkbox" asp-for="DMS" /> <label>Document</label>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-6">
+                    <div class="form-check">
+                        <input type="checkbox" asp-for="CMS" />   <label>Correspondence</label>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-6">
+                    <div class="form-check">
+                        <input type="checkbox" asp-for="BPM" />   <label>Business Process</label>
+                    </div>
+                    <br />
+                </div>
+                <div class="col-6">
+                    <div class="form-check">
+                        <input type="checkbox" asp-for="Oper" />   <label>Operation</label>
+                    </div>
+                    <br />
+                </div>
+                <div class="col-6">
+                    <div class="form-check">
+                        <input type="checkbox" asp-for="CRM" />   <label>CRM</label>
+                    </div>
+                    <br />
+                </div>
+                <div class="col-6">
+                    <div class="form-check">
+                        <input type="checkbox" asp-for="HRM" />   <label>Human Resource</label>
+                    </div>
+                    <br />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="text-success">
+    @if (ViewData["SuccessMessage"] != null)
+    {
+        <p>@ViewData["SuccessMessage"]</p>
+    }
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <p class="text-danger">@ViewData["ErrorMessage"]</p>
+    }
+</div>
+<br />
+<br />
+<br />
+<br />
+ 
+

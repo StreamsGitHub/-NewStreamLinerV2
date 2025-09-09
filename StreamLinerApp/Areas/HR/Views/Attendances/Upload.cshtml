@@ -1,0 +1,52 @@
+﻿@model StreamLinerViewModelLayer.HRViewModel.UploadFileViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_Attend" />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Upload" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="DocumentName" class="control-label"></label>
+                        <input asp-for="DocumentName" class="form-control" />
+                        <span asp-validation-for="DocumentName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <div>
+                            <label asp-for="DocumentFile" class="form-label"></label>
+                            <input class="form-control" asp-for="DocumentFile" type="file">
+                        </div>
+                        <span asp-validation-for="DocumentFile" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-label text-white">.</label>
+                        <input type="submit" value="upload" class="btn btn-primary form-control" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+@if (ViewData["ex"] != null)
+{
+    <div class="row">
+        <div class="col-md-8">
+            <p style="color:maroon;background-color:pink; padding:15px;  border: 1px solid maroon;border-radius:15px;font-size:12pt;text-align:center;direction:ltr !important;">
+                @ViewData["ex"]
+            </p>
+        </div>
+    </div>
+}
+
+

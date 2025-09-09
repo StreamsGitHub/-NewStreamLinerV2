@@ -1,0 +1,45 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRDepartment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DepartmentId" />
+            <div class="form-group">
+                <label asp-for="DepartmentName" class="control-label"></label>
+                <input asp-for="DepartmentName" class="form-control" />
+                <span asp-validation-for="DepartmentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParentId" class="control-label"></label>
+                <select asp-for="ParentId" class="form-control select2" asp-items="ViewBag.ParentId">
+                    <option value="0" data=""></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HRManagerId" class="control-label"></label>
+                <select asp-for="HRManagerId" class="form-control select2" asp-items="ViewBag.ManagerId">
+                    <option value="0" data=""></option>
+                </select>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="DepartmentDesc" class="control-label"></label>
+                <input asp-for="DepartmentDesc" class="form-control" />
+                <span asp-validation-for="DepartmentDesc" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" /> |
+                <a  asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

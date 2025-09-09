@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream Liner - HRM</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+    <link rel="stylesheet" href="~/css/Style.css" />
+    <link href="~/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <style>
+              .bglf {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0 !important;
+            border-bottom-width: 5px;
+            border-bottom-color:hotpink ;
+            border-bottom-style: solid;
+            background-color: #01426a;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/sidebars.css">
+</head>
+<body>
+    <partial name="_HeaderApp" />
+   
+    <main>
+        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                @* 	<svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap" /></svg> *@
+                <span class="fs-5 fw-semibold" style="color:hotpink">	<i class="fa fa-folder-open-o"></i> Human Resource </span>
+            </a>
+
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                    <a asp-action="Index" asp-controller="Departments" class="btn align-items-center">
+                        <i class="fa fa-sitemap  nav-icon" style="font-size:18px"></i>
+                        Departments
+                    </a>
+                </li>
+
+               
+                <li class="mb-1">
+                    <a asp-action="CloseDay" asp-controller="Attendances" class="btn align-items-center">
+                        <i class="fa fa-fax nav-icon" style="font-size:18px"></i>
+                        Attendance
+                    </a>
+                </li>
+
+
+                <li class="mb-1">
+                    <a asp-action="GetMC" asp-controller="Reports" class="btn align-items-center">
+                        <i class="fa fa-address-card  nav-icon" style="font-size:18px"></i>
+                        Payroll
+                    </a>
+                </li>
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="Vacations" class="btn align-items-center">
+                        <i class="fa fa-bed  nav-icon" style="font-size:18px"></i>
+                        Leaves
+                    </a>
+                </li>
+
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="Missions" class="btn align-items-center">
+                        <i class="fa fa-car  nav-icon" style="font-size:18px"></i>
+                        Missions
+                    </a>
+                </li>
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="Permissions" class="btn align-items-center">
+                        <i class="fa fa-coffee  nav-icon" style="font-size:18px"></i>
+                        Permissions  
+                    </a>
+                </li>
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="Benefits" class="btn align-items-center">
+                        <i class="fa fa-trophy  nav-icon" style="font-size:18px"></i>
+                        Benefits
+                    </a>
+                </li>
+
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="Allowance" class="btn align-items-center">
+                        <i class="fa fa-gift  nav-icon" style="font-size:18px"></i>
+                        Allowances
+                    </a>
+                </li>
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="Expenses" class="btn align-items-center">
+                        <i class="fa fa-money  nav-icon" style="font-size:18px"></i>
+                        Expenses
+                    </a>
+                </li>
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="OverTime" class="btn align-items-center">
+                        <i class="fa fa-clock-o  nav-icon" style="font-size:18px"></i>
+                        Overtime
+                    </a>
+                </li>
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="AdvancePayment" class="btn align-items-center">
+                        <i class="fa fa-usd  nav-icon" style="font-size:18px"></i>
+                        Salary Advances
+                    </a>
+                </li>
+
+
+                <li class="mb-1">
+                    <a asp-action="index" asp-controller="Penalties" class="btn align-items-center">
+                        <i class="fa fa-gavel  nav-icon" style="font-size:18px"></i>
+                        Penalties 
+                    </a>
+                </li>
+               
+
+            </ul>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="container p-4">
+          @*   <br />
+            <h3>  @ViewData["ControllerName"] - @ViewData["Action"] </h3>
+            <hr /> *@
+            @RenderBody()
+
+
+        </div>
+    </main>
+
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/sidebars.js"></script>
+    <script src="~/plugins/select2/js/select2.full.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2({
+                theme: 'bootstrap4'
+            })
+            //Add text editor
+            $('#compose-textarea').summernote()
+
+        })
+    </script>
+</body>
+</html>

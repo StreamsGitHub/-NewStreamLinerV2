@@ -1,0 +1,50 @@
+﻿@model IEnumerable<StreamLinerViewModelLayer.ModelDTO.ProjectDto>
+
+@{
+    ViewData["Title"] = "Projects";
+}
+<br />
+<br />
+<p style="text-align:right;">
+    <a href="#" class="btn btn-primary">Add Project</a>
+</p>
+<div class="row ">
+
+    <div class="col-12 p-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name="" id=""></th>
+                    <th>Id</th>
+                    <th>Project Name</th>
+                    <th>Creation date</th>
+                    <th>Pages</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>@item.Id</td>
+                        <td>@item.Project_Name</td>
+                        <td>@item.Project_Date</td>
+                            <td>
+                            @if (item.Closed == true)
+                            {
+                               <i class="material-icons" style="font-size:48px;color:green">done</i>
+
+                            }
+                            else
+                            {
+                                <i class="material-icons" style="font-size:48px;color:red">clear</i>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

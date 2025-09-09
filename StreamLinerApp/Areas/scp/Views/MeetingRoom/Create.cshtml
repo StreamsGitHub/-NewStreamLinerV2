@@ -1,0 +1,40 @@
+﻿ @model StreamLinerViewModelLayer.ModelDTO.MeetingRoomDTO 
+
+
+@{
+    ViewData["Title"] = "Meetings";
+}
+
+<style>
+    .e-upload.e-control-wrapper, .e-bigger.e-small .e-upload.e-control-wrapper {
+        height: 300px;
+        width: 300px;
+    }
+</style>
+
+<br />
+<div class="container">
+    <h3> @ViewData["controller"] -   @ViewData["action"]   </h3>
+</div>
+<hr />
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+
+            <form method="post"  asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" type="text" class="form-control">
+                </div>
+              
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </form>
+        </div>
+    </div>
+</div>

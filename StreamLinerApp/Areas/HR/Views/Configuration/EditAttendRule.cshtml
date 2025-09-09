@@ -1,0 +1,40 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRAttendRole
+
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditAttendRule">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AttendRoleId" />
+            <div class="form-group">
+                <label asp-for="NameAttendRole" class="control-label"></label>
+                <input asp-for="NameAttendRole" class="form-control" />
+                <span asp-validation-for="NameAttendRole" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="LateMin" class="control-label"></label>
+                <input asp-for="LateMin" class="form-control" />
+                <span asp-validation-for="LateMin" class="text-danger"></span>
+            </div>  <br />
+            <div class="form-group">
+                <label asp-for="PenaltyMin" class="control-label"></label>
+                <input asp-for="PenaltyMin" class="form-control" />
+                <span asp-validation-for="PenaltyMin" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />|
+                <a asp-action="AttendRules" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+

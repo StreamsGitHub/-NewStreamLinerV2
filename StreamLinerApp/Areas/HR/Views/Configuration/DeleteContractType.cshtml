@@ -1,0 +1,28 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRContractType
+
+@{
+    ViewData["Title"] = "Delete Contract Type";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+
+
+<div>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HRContractTypeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HRContractTypeName)
+        </dd>
+       
+    </dl>
+    <br />
+    <form asp-action="DeleteContractType">
+        <input type="hidden" asp-for="HRContractTypeId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="ContractTypes" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>

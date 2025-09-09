@@ -1,0 +1,85 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRAttend>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_Attend" />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Closeday">
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group">
+                        <input name="date" class="form-control" type="date" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <input type="submit" value="view " class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <h3>  @ViewData["date"] </h3>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                   Employee
+                </th>
+
+                <th>
+                    Check In
+                </th>
+                <th>
+                    Check Out
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                  
+                    <td>
+                        @item.Partner.FirstName   @item.Partner.MiddleName
+                    </td>
+
+                    <td>
+                        @if (item.CheckTypeIn > 0)
+                        {
+                            <i class="@item.IconIn" style="font-size:16px;"></i>
+                            @Convert.ToDateTime(item.CheckIn).ToShortTimeString()
+                        }
+                        else
+                        {
+                            <strong class="text-danger"> Absent </strong>
+                        }
+                    </td>
+                    <td>
+                        @if (item.CheckTypeOut > 0)
+                        {
+                            <i class="@item.IconOut" style="font-size:16px;"></i>
+                            @Convert.ToDateTime(item.CheckOut).ToShortTimeString()
+                        }
+                        else
+                        {
+                            <strong class="text-danger"> Absent </strong>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

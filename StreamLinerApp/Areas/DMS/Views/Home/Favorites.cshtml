@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = " My Repositor ";
+}
+<br />
+<h2 class="text-primary">  <i class="fa fa-star"></i> Favorites  </h2>
+<hr />
+ 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newfolder">
+	<i class="fa fa-plus"></i> Create Favorite Folder
+</button>
+<div class="modal" id="newfolder">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form method="post" asp-action="CreateFolder">
+				<input type="text" value="4D4D35ED-E381-4F17-9B0C-20D6698A8A07" class="form-control" id="ParentId" name="ParentId" hidden="hidden">
+				<div class="modal-body">
+					<input type="text" class="form-control" id="Name" name="Name" placeholder="Enter folder name">
+					<br />
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<br />
+<br />
+<div class="row">
+
+		<div class="col-2 text-center">
+			<a class="btn" href="#">
+				<img src="~/img/ico/favoritesfolder.png" alt="Alternate Text" />
+				<br />
+				<p>Folder 1</p>
+			</a>
+		</div>
+	<div class="col-2 text-center">
+		<a class="btn" href="#">
+			<img src="~/img/ico/favoritesfolder.png" alt="Alternate Text" />
+			<br />
+			<p>Folder 1</p>
+		</a>
+	</div>
+	<div class="col-2 text-center">
+		<a class="btn" href="#">
+			<img src="~/img/ico/favoritesfolder.png" alt="Alternate Text" />
+			<br />
+			<p>Folder 1</p>
+		</a>
+	</div>
+</div>

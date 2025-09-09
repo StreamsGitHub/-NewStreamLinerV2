@@ -1,0 +1,157 @@
+﻿@{
+	ViewData["Title"] = " My Repositor ";
+}
+<br />
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newfolder">
+	<i class="fa fa-plus"></i> Create Folder
+</button>
+<div class="modal" id="newfolder">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form method="post" asp-action="CreateFolder">
+				<input type="text" value="4D4D35ED-E381-4F17-9B0C-20D6698A8A07" class="form-control" id="ParentId" name="ParentId" hidden="hidden">
+				<div class="modal-body">
+					<input type="text" class="form-control" id="Name" name="Name" placeholder="Enter folder name">
+					<br />
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="row ">
+	<div class="col-12 p-4">
+		<h3>My Folders </h3>
+		<br />
+		<div class="row">
+
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/wpaperfolder.png" alt="Alternate Text" />
+					<br />
+					<p>My Document</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/icloudfolder.png" alt="Alternate Text" />
+					<br />
+					<p>Upload</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/photosfolder.png" alt="Alternate Text" />
+					<br />
+					<p>Pictures</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/musicfolder.png" alt="Alternate Text" />
+					<br />
+					<p>Music</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/videofolder.png" alt="Alternate Text" />
+					<br />
+					<p>Videos</p>
+				</a>
+			</div>
+			
+
+		</div>
+		<br />
+		<hr />
+		<br />
+		<h4>My Files </h4>
+		<br />
+		<div class="row">
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/docx.png" alt="Alternate Text" />
+					<br /><br />
+					<p>Word File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/xlsx.png" alt="Alternate Text" />
+					<br /><br />
+					<p>excel File</p>
+				</a>
+			</div>
+
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/pptx.png" alt="Alternate Text" />
+					<br /><br />
+					<p>powerpoint File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/pdf.png" alt="Alternate Text" />
+					<br /><br />
+					<p>PDF File</p>
+				</a>
+			</div>
+
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/txt.png" alt="Alternate Text" />
+					<br /><br />
+					<p>Text File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/Generic.png" alt="Alternate Text" />
+					<br /><br />
+					<p>Generic File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					@* <i class="fa fa-file-word-o text-primary" style="font-size:48px;"></i> *@
+					<img src="~/img/ico/Photo.png" alt="Alternate Text" />
+					<br /><br />
+					<p>image File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/Code.png" alt="Alternate Text" />
+					<br /><br />
+					<p>Code File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/Video.png" alt="Alternate Text" />
+					<br /><br />
+					<p>Video File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/Audio.png" alt="Alternate Text" />
+					<br /><br />
+					<p>Audio File</p>
+				</a>
+			</div>
+			<div class="col-2 text-center">
+				<a class="btn" href="#">
+					<img src="~/img/ico/xml.png" alt="Alternate Text" />
+					<br /><br />
+					<p>xml File</p>
+				</a>
+			</div>
+
+
+		</div>
+	</div>
+
+</div>

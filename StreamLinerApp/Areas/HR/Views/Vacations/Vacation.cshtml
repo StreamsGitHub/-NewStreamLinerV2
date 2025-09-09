@@ -1,0 +1,118 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRVacations
+
+@{
+    ViewData["Title"] = "Vacation";
+    
+}
+
+<partial name="_VacationsReview" />
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-8">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="PartnerId" class="control-label"></label>
+                    <label class="form-control">@Model.Partner.FullName</label>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="VacationTypeId" class="control-label"></label>
+                    <label class="form-control">@Model.HRVacationType.VacationTypeName</label>
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="VacationDate" class="control-label"></label>
+                    <label class="form-control">@Model.VacationDate.Date</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="VacationDays" class="control-label"></label>
+                    <label class="form-control">@Model.VacationDays</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label asp-for="Reason" class="control-label"></label>
+                    <input asp-for="Reason" class="form-control" disabled="disabled" />
+                </div>
+            </div>
+        </div>
+        <br />
+        @if (Model.VacationState > 3)
+        {
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label asp-for="ApprovedReason" class="control-label"></label>
+                    <input asp-for="ApprovedReason" class="form-control" disabled="disabled" />
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label asp-for="AllowedReason" class="control-label"></label>
+                    <input asp-for="AllowedReason" class="form-control" disabled="disabled" />
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-2">
+                @if (Model.VacationState == 2)
+                {
+                    <form asp-action="ApproveVacation" asp-route-id="@Model.VacationId" method="post">
+                        <input type="submit" value="Approve" class="btn btn-success  btn-block" asp-action="ApproveVacation" asp-route-id="@Model.VacationId" method="post" />
+                    </form>
+                }
+            </div>
+
+            <div class="col-md-2">
+                @if (Model.VacationState == 2)
+                {
+                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-default">
+                        Reject
+                    </button>
+                    @*  <form asp-action="RejectVacation" asp-route-id="@Model.VacationId" method="post">
+                <input type="submit" value="Reject" class="btn btn-danger" asp-action="RejectVacation" asp-route-id="@Model.VacationId" method="post" />
+                </form> *@
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <form asp-action="RejectVacation" asp-route-id="@Model.VacationId" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Default Modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input name="VacationId" value="@Model.VacationId" type="hidden" />
+                    <div class="form-group">
+                        <label class="control-label"> Reject </label>
+                        <input name="RejectReason" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Reject" class="btn btn-danger" asp-action="RejectVacation" method="post" />
+                </div>
+            </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

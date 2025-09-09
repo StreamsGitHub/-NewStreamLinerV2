@@ -1,0 +1,37 @@
+﻿<div class="card card-primary card-outline">
+    <div class="card-body box-profile">
+        <div class="text-center">
+            <img class="profile-user-img img-thumbnail rounded-circle"
+                 src="~/@ViewData["img"]"
+                 alt="User profile picture">
+        </div>
+
+        <h3 class="profile-username text-center"></h3>
+
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">
+                <b><i class="fa fa-user text-primary"></i></b>  @ViewData["FullName"]
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action">
+                <b><i class="fa fa-briefcase text-primary"></i></b> @ViewData["Titlee"]
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action disabled">
+                <b><i class="fa fa-calendar text-primary"></i></b>@Convert.ToDateTime(ViewData["BDate"]).ToString("yyyy-MM-dd")
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action disabled">
+                <b><i class="fa fa-phone text-primary"></i></b> @ViewData["Mobile"]
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action disabled">
+                <b><i class="fa fa-envelope text-primary"></i></b> <@ViewData["Email"]
+            </a>
+        </div>
+        <br />
+
+        <a asp-controller="@ViewData["ControllerName"]" asp-action="Details" asp-route-id="@ViewData["PartnerId"]" class="btn btn-primary btn-block" style="width:100%"><b> <i class="fa fa-dashboard"></i> Employee Dashboard    </b></a>
+    </div>
+
+</div>

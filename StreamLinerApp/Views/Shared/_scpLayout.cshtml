@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream Liner - Admin</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Style.css" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <style>
+            .bglf {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0 !important;
+            border-bottom-width: 5px;
+            border-bottom-color: var(--bs-dark);
+            border-bottom-style: solid;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/sidebars.css">
+</head>
+<body>
+
+    <partial name="_HeaderApp" />
+    <main>
+        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+            <a asp-action="index" asp-controller="Home" asp-area="" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+               
+                <span class="fs-5 fw-semibold"> <i class="fa fa-cog" style="font-size:20px"> </i> Admin</span>
+            </a>
+
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1"><a href="#" class="btn align-items-center"> <i class="fa fa-bank" style="font-size:16pt"></i> Organizations  </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-area="scp" asp-controller="Users" class="btn align-items-center"> <i class="fa fa-user-circle-o" style="font-size:16pt"></i>   Users</a></li>
+                <li class="mb-1"><a href="#" class="btn align-items-center"> <i class="fa fa-group" style="font-size:16pt"></i>  Teams </a></li>
+                <li class="mb-1"><a href="#" class="btn align-items-center"> <i class="fa fa-vcard" style="font-size:16pt"> </i> Interface  </a></li>
+                <li class="mb-1"><a href="#" class="btn align-items-center"> <i class="material-icons">call_split</i>  Process Automation  </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-area="scp" asp-controller="DocTemp" class="btn align-items-center"> <i class="fa fa-clipboard" style="font-size:16pt"></i> Templates </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-area="scp" asp-controller="MetaData" class="btn align-items-center"> <i class="fa fa-list-alt" style="font-size:16pt"></i>  MetaData  </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-area="scp" asp-controller="Field" class="btn   align-items-center"> <i class="fa fa-navicon" style="font-size:16pt"></i>  Fields </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-area="scp" asp-controller="MeetingRoom" class="btn   align-items-center"> <i class="fa fa-building" style="font-size:16pt"></i>  Meeting    </a></li>
+            </ul>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="container">
+
+            @RenderBody()
+
+
+        </div>
+    </main>
+
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/sidebars.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

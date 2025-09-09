@@ -1,0 +1,42 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRContractType>
+
+@{
+    ViewData["Title"] = "Contract Type";
+    
+}
+
+<partial name="_ConfigurationMenu" />
+<br />
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateContractType">  <i class="fa fa-plus"></i> Create New    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HRContractTypeName)
+            </th>
+            <th style="width:200px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HRContractTypeName)
+                </td>
+
+                <td>
+                    <a asp-action="EditContractType" class="btn btn-info" asp-route-id="@item.HRContractTypeId"><i class="fa fa-eye"></i></a> |
+                    <a asp-action="DeleteContractType" class="btn btn-danger" asp-route-id="@item.HRContractTypeId"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

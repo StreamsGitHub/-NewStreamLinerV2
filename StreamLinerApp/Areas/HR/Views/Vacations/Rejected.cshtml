@@ -1,0 +1,70 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRVacations>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<partial name="_VacationsReview" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <i class="fa fa-file" style="font-size:16pt"></i>
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Reason
+            </th>
+            <th>
+                Days
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <i class="fa fa-times text-danger" style="font-size:16pt"></i>
+                </td>
+                <td>
+                    @Convert.ToDateTime(item.VacationDate).ToString("yyyy-MM-dd")
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.FullName)
+                </td>
+                <td>
+                    @item.HRVacationType.VacationTypeName
+                </td>
+                <td>
+                    @item.Reason
+                </td>
+                <td>
+                    @item.VacationDays
+                </td>
+                <td>
+                    <a asp-action="Vacation" asp-route-id="@item.VacationId" class="btn btn-danger">
+                        <i class="fa fa-bed"></i>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+ 

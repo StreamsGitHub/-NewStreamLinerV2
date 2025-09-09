@@ -1,0 +1,27 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRBenefitsType
+
+@{
+    ViewData["Title"] = "Create";
+    
+}
+
+<partial name="_ConfigurationMenu" />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateBenefitsType">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HRBenefitsTypeName" class="control-label"></label>
+                <input asp-for="HRBenefitsTypeName" class="form-control" />
+                <span asp-validation-for="HRBenefitsTypeName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" /> |
+                <a asp-action="BenefitsTypes" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+

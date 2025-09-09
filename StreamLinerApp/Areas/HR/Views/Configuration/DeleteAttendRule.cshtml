@@ -1,0 +1,29 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRAttendRole
+
+@{
+    ViewData["Title"] = "Attend Rule";
+    
+}
+
+<partial name="_ConfigurationMenu" />
+<br />
+
+
+<div>
+ 
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NameAttendRole)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NameAttendRole)
+        </dd>
+       
+    </dl>
+    <br />
+    <form asp-action="DeleteAttendRule">
+        <input type="hidden" asp-for="AttendRoleId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="AttendRules" class="btn btn-secondary">Back</a>
+    </form>
+</div>

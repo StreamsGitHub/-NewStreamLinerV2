@@ -1,0 +1,64 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.UploadFile>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_Attend" />
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <i class="fa fa-file" style="font-size:16pt"></i>
+                </th>
+                <th>
+                  File Name
+                </th>
+
+                <th>
+                   Upload Date
+                </th>
+                <th >
+                   
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item.Extension == ".pdf")
+                        {
+                            <i class="fa fa-file-pdf text-danger" style="font-size:16px;"></i>
+                        }
+                        else if (item.Extension == ".docx")
+                        {
+                            <i class="fa fa-file-word text-primary" style="font-size:16px;"></i>
+                        }
+                        else if (item.Extension == ".xlsx" || item.Extension == ".xls")
+                        {
+                            <i class="fa fa-file-excel text-success" style="font-size:16px;"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-file" style="font-size:16px;"></i>
+                        }
+                    </td>
+                    <td>
+                        @item.DocumentName
+                    </td>
+                    <td>
+                        @Convert.ToDateTime(item.CreatedDate).ToString("yyyy-MM-dd")
+                    </td>
+                    <td>
+                        <a class="btn btn-info" asp-action="UploadedFile" asp-route-id="@item.UploadFileId"><i class="fa fa-eye"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRMission>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<p>
+    <a class="btn btn-primary" asp-action="Create"><i class="fa fa-plus"></i>  New Business Trip</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <i class="fa fa-hourglass-1" style="font-size:16pt"></i>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartnerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MissionName)
+            </th>
+            @*            <th>
+            @Html.DisplayNameFor(model => model.MissionDescription)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.HRMissionTypeId)
+            </th>
+            <th colspan="2" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th colspan="2" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.ManagerId)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.Approved)
+            </th>*@
+
+            <th style="width:70px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.MissionState == 1)
+                    {
+                        <i class="fa fa-hourglass-1  text-warning" style="font-size:16pt"></i>
+                    }
+                    else if (item.MissionState == 2)
+                    {
+                        <i class="fa fa-hourglass-2  text-info" style="font-size:16pt"></i>
+                    }
+                    else if (item.MissionState == 3)
+                    {
+                        <i class="fa fa-check text-success" style="font-size:16pt"></i>
+                    }
+                    else if (item.MissionState == 4 || item.MissionState == 5)
+                    {
+                        <i class="fa fa-times text-danger" style="font-size:16pt"></i>
+                    }
+                    else if (item.MissionState == 0)
+                    {
+                        <i class="fa fa-archive" style="font-size:16pt"></i>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Partner.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MissionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HRMissionType.HRMissionTypeName)
+                </td>
+                <td>
+                    @item.StartTime.ToString("yyyy-MM-dd") 
+                </td>
+                <td>
+                    @item.StartTime.ToString("T")
+                </td>
+                <td>
+                    @item.EndTime.ToString("yyyy-MM-dd")
+                </td>
+                <td>
+                    @item.EndTime.ToString("T")
+                </td>
+                <td>
+                    <a asp-action="Details" class="btn btn-info" asp-route-id="@item.HRMissionId">  <i class="fa fa-eye"></i></a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

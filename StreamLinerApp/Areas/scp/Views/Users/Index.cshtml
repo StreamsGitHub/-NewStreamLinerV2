@@ -1,0 +1,47 @@
+﻿@model IEnumerable<StreamLinerViewModelLayer.ModelDTO.UsersDtoResult>
+
+@{
+    ViewData["Title"] = "Users";
+}
+<br />
+<h3>My Folders </h3>
+<br />
+<p>
+    <a asp-action="adduser" class="btn btn-primary"> <i class="fa fa-plus"></i> Add User</a>
+</p>
+
+<div class="row ">
+
+    <div class="col-12 p-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>FullName</td>
+                    <td>Email</td>
+                    <td>Position</td>
+                    <th style="width:150px;"> Action </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                     
+                        <td>@item.FullName</td>
+                        <td>@item.Email</td>
+                        <td>@item.Position</td>
+                        <td>
+                            <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+               
+                
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

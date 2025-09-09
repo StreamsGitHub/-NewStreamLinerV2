@@ -1,0 +1,87 @@
+﻿@model StreamLinerViewModelLayer.HRViewModel.BenefitsViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HRBenefitsId"/>
+           
+            <div class="form-group">
+                <label asp-for="PartnerId" class="control-label"></label>
+                <select asp-for="PartnerId" class="form-control" asp-items="ViewBag.PartnerId"></select>
+                <span asp-validation-for="PartnerId" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="BenefitType" class="control-label"></label>
+                <select id="BenefitType" asp-for="BenefitType" class="form-control select2" asp-items="ViewBag.BenefitType">
+                    <option value="0">Choose Penalty Type</option>
+                    <option value="1"> Value </option>
+                    <option value="2"> Days </option>
+                    <option value="3"> Hour </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="ValueLabel" asp-for="ViewValue" class="control-label"></label>
+                <input asp-for="ViewValue" class="form-control" />
+                <span asp-validation-for="ViewValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BenefitDate" class="control-label"></label>
+                <input asp-for="BenefitDate" class="form-control" type="date" />
+                <span asp-validation-for="BenefitDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+           
+           
+            <div class="form-group">
+                <label asp-for="HRBenefitsTypeId" class="control-label"></label>
+                <select asp-for="HRBenefitsTypeId" class="form-control" asp-items="ViewBag.HRBenefitsTypeId"></select>
+                <span asp-validation-for="HRBenefitsTypeId" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />|
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#BenefitType").change(function () {
+            $.ajax({
+                success: function (data) {
+                    if ($(this).val() == 1) {
+                        $("#ValueLabel").("");
+                        $("#ValueLabel").val.("Value LE");
+                    }
+                    else if ($(this).val() == 2) {
+                        $("#ValueLabel").("");
+                        $("#ValueLabel").val.("Count Of Days");
+                    }
+                    else if ($(this).val() == 3) {
+                        $("#ValueLabel").("");
+                        $("#ValueLabel").val.("Count Of Hour");
+                    }
+
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        });
+    });
+</script>

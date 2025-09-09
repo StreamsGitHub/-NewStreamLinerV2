@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRAttend>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_Attend" />
+
+ 
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <i class="fa fa-file" style="font-size:16pt"></i>
+                </th>
+                <th>
+                    Employee
+                </th>
+
+                <th>
+                    Check In
+                </th>
+                <th>
+                    Check Out
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                    </td>
+                    @* <td>
+                @if (item. == ".pdf")
+                {
+                <i class="fa fa-file-pdf text-danger" style="font-size:16px;"></i>
+                }
+                else if (item.Extension == ".docx")
+                {
+                <i class="fa fa-file-word text-primary" style="font-size:16px;"></i>
+                }
+                else if (item.Extension == ".xlsx" || item.Extension == ".xls")
+                {
+                <i class="fa fa-file-excel text-success" style="font-size:16px;"></i>
+                }
+                else
+                {
+                <i class="fa fa-file" style="font-size:16px;"></i>
+                }
+                </td> *@
+                    <td>
+                        @item.Partner.FirstName   @item.Partner.MiddleName
+                    </td>
+
+                    <td>
+                        @if (item.CheckTypeIn > 0)
+                        {
+                            @Convert.ToDateTime(item.CheckIn).ToShortTimeString()
+                        }
+                        else
+                        {
+                            <strong class="text-danger"> Absent </strong>
+                        }
+                    </td>
+                    <td>
+                        @if (item.CheckTypeOut > 0)
+                        {
+                            @Convert.ToDateTime(item.CheckOut).ToShortTimeString()
+                        }
+                        else
+                        {
+                            <strong class="text-danger"> Absent </strong>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

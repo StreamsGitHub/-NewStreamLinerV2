@@ -1,0 +1,26 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRMissionType
+
+@{
+    ViewData["Title"] = "Delete";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+ 
+<div>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HRMissionTypeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HRMissionTypeName)
+        </dd>
+    </dl>
+    <br />
+    <form asp-action="DeleteMissionType">
+        <input type="hidden" asp-for="HRMissionTypeId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="MissionTypes" class="btn btn-secondary">Back</a>
+    </form>
+</div>

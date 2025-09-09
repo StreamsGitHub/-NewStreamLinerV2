@@ -1,0 +1,64 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRPermission
+
+@{
+    ViewData["Title"] = "Details";
+    
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="PartnerId" class="control-label"></label>
+            <input asp-for="PartnerId" class="form-control" disabled="disabled" />
+        </div>
+        <div class="form-group">
+            <label asp-for="PermissionName" class="control-label"></label>
+            <input asp-for="PermissionName" class="form-control" disabled="disabled" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Reason" class="control-label"></label>
+            <input asp-for="Reason" class="form-control" disabled="disabled" />
+        </div>
+        <div class="row">
+            <div class="form-group col-6">
+                <div class="col-12">
+                    <label asp-for="StartTime" class="control-label"></label>
+                    <input asp-for="StartTime" class="form-control" disabled="disabled" />
+                </div>
+            </div>
+            <div class="form-group col-6">
+
+                <div class="form-group">
+                    <label asp-for="EndTime" class="control-label"></label>
+                    <input asp-for="EndTime" class="form-control" disabled="disabled" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2">
+        <a asp-action="Details" asp-route-id="@ViewData["PartnerId"]" class="btn btn-dark">Back</a>
+    </div>
+    <div class="col-2">
+        @if (Model.PermissionState == 2)
+        {
+            <form asp-action="ApprovePermission" asp-route-id="@Model.HRPermissionId" method="post">
+                <input type="submit" value="Approve" class="btn btn-success" asp-action="ApprovePermission" asp-route-id="@Model.HRPermissionId" method="post" />
+            </form>
+        }
+    </div>
+    <div class="col-2">
+        @if (Model.PermissionState == 2)
+        {
+            <form asp-action="RejectPermission" asp-route-id="@Model.HRPermissionId" method="post">
+                <input type="submit" value="Reject" class="btn btn-danger" asp-action="RejectPermission" asp-route-id="@Model.HRPermissionId" method="post" />
+            </form>
+        }
+    </div>
+
+</div>
+

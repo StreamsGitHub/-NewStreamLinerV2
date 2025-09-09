@@ -1,0 +1,27 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRBenefitsType
+
+@{
+    ViewData["Title"] = "Delete";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+
+<div>
+ 
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HRBenefitsTypeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HRBenefitsTypeName)
+        </dd>
+        
+    </dl>
+    <br />
+    <form asp-action="DeleteBenefitsType">
+        <input type="hidden" asp-for="HRBenefitsTypeId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />  |
+        <a asp-action="BenefitsTypes" class="btn btn-secondary">Back</a>
+    </form>
+</div>

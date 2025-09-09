@@ -1,0 +1,57 @@
+﻿
+@model StreamLinerEntitiesLayer.HREntities.HRPenalty
+
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HRPenaltyId" />
+            <div class="form-group">
+                <label asp-for="PartnerId" class="control-label"></label>
+                <select asp-for="PartnerId" class="form-control" asp-items="ViewBag.PartnerId"></select>
+                <span asp-validation-for="PartnerId" class="text-danger"></span>
+            </div>
+         
+
+            <div class="form-group">
+                <label asp-for="PenaltyDays" class="control-label"></label>
+                <input asp-for="PenaltyDays" class="form-control" />
+                <span asp-validation-for="PenaltyDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PenaltyDate" class="control-label"></label>
+                <input asp-for="PenaltyDate" class="form-control" />
+                <span asp-validation-for="PenaltyDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PenaltyValue" class="control-label"></label>
+                <input asp-for="PenaltyValue" class="form-control" />
+                <span asp-validation-for="PenaltyValue" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="HRPenaltyTypesId" class="control-label"></label>
+                <select asp-for="HRPenaltyTypesId" class="form-control" asp-items="ViewBag.HRPenaltyTypesId"></select>
+                <span asp-validation-for="HRPenaltyTypesId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />|
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

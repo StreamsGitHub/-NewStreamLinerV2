@@ -1,0 +1,106 @@
+﻿.hovercard {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+    .hovercard:hover {
+        background-color: #e0e0e0;
+    }
+
+.icard {
+    font-size: 24px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.e-upload.e-control-wrapper, .e-bigger.e-small .e-upload.e-control-wrapper {
+    height: 300px;
+    width: 300px;
+}
+
+.RendBody {
+    background-color: #f2f2f2;
+   
+}
+
+.profilehead {
+    background: #090979;
+    background: linear-gradient(90deg, rgba(9, 9, 121, 1) 0%, rgba(4, 107, 128, 1) 100%);
+}
+.sysinfouser {
+    background-color: #E7E9EB;
+    box-shadow: 1px 1px 1px 3px lightgray;
+    border-radius: 10px;
+    border: 1px solid #FFF;
+    padding: 10px;
+}
+
+.notecard {
+    background-color: #fff6cb;
+    box-shadow: 1px 1px 1px 1px #D6D6D6;
+    border-radius: 10px;
+    border: 1px solid #D6D6D6;
+    border-top: 5px solid #ffee92;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.notecard:hover {
+    background-color: #D6E9FF;
+}
+
+.chatleft {
+    background-color: #D6E9FF;
+    padding: 20px;
+    border-radius: 0px 25px 25px 25px;
+}
+
+.chatright {
+    background-color: #b7fde3;
+    padding: 20px;
+    border-radius: 25px 0px 25px 25px;
+}
+.btn-app {
+    border-radius: 3px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    color: var(--bs-dark);
+    font-size: 12px;
+    height: 60px;
+    margin: 0 0 10px 10px;
+    min-width: 80px;
+    padding: 15px 5px;
+    position: relative;
+    text-align: center;
+}
+
+    .btn-app > .fa,
+    .btn-app > .fas,
+    .btn-app > .far,
+    .btn-app > .fab,
+    .btn-app > .glyphicon,
+    .btn-app > .ion {
+        display: block;
+        font-size: 20px;
+        color: var(--bs-primary);
+    }
+
+    .btn-app:hover {
+        background: #f8f9fa;
+        border-color: #aaaaaa;
+        color: #444;
+    }
+
+    .btn-app:active, .btn-app:focus {
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
+
+    .btn-app > .badge {
+        font-size: 10px;
+        font-weight: 400;
+        position: absolute;
+        right: -10px;
+        top: -3px;
+    }
+

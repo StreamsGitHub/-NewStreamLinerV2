@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Create ";
+}
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 p-1 ">
+        </div>
+
+        <div class="col-md-8 p-1 text-end">
+            <partial name="_CMSComposeNav" />
+        </div>
+
+    </div>
+</div>
+<hr />
+
+<div class="container mt-5">
+   
+        <div class="row">
+        <div class="col-md-1">
+            </div>
+        <div class="col-md-6">
+            <h2>Upload File</h2>
+            <div class="card card-body">
+                <br />
+                <div class="mb-3">
+                    <label for="title" class="form-label">File Name</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter Name">
+                </div>
+                <br />
+                <input type="file" />
+                <br />
+                <br />  
+                <button type="submit" class="btn btn-primary">Upload</button>
+                
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-4">
+         <h2>Meta Data</h2>
+
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="Enter title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Author</label>
+                            <input type="text" class="form-control" id="author" placeholder="Enter author name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="tags" placeholder="Enter tags, separated by commas">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" id="category">
+                                <option selected>Select category</option>
+                                <option value="1">Technology</option>
+                                <option value="2">Health</option>
+                                <option value="3">Lifestyle</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+<br />
+<br />
+<script src="~/lib/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: '#textarea', plugins: "tooltip print preview fullpage paste searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample code table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern", toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat', height: "700", paste_data_images: true
+    });
+
+</script>

@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="EPPlus" Version="8.1.0" />
+    <PackageReference Include="EPPlus.Interfaces" Version="8.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StreamLinerDataLayer\StreamLinerDataLayer.csproj" />
+    <ProjectReference Include="..\StreamLinerEntitiesLayer\StreamLinerEntitiesLayer.csproj" />
+    <ProjectReference Include="..\StreamLinerLogicLayer\StreamLinerLogicLayer.csproj" />
+    <ProjectReference Include="..\StreamLinerRepositoryLayer\StreamLinerRepositoryLayer.csproj" />
+    <ProjectReference Include="..\StreamLinerViewModelLayer\StreamLinerViewModelLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\API\Controllers\" />
+    <Folder Include="Areas\API\Data\" />
+    <Folder Include="Areas\API\Models\" />
+    <Folder Include="Areas\API\Views\" />
+    <Folder Include="Areas\Archive\Data\" />
+    <Folder Include="Areas\Archive\Models\" />
+    <Folder Include="Areas\CMS\Data\" />
+    <Folder Include="Areas\CMS\Models\" />
+    <Folder Include="Areas\DMS\Data\" />
+    <Folder Include="Areas\DMS\Models\" />
+    <Folder Include="Areas\BPM\Data\" />
+    <Folder Include="Areas\BPM\Models\" />
+    <Folder Include="Areas\HR\Data\" />
+    <Folder Include="Areas\HR\Models\" />
+    <Folder Include="Areas\Profile\Data\" />
+    <Folder Include="Areas\Profile\Models\" />
+    <Folder Include="Areas\scp\Data\" />
+    <Folder Include="Areas\scp\Models\" />
+    <Folder Include="Areas\CRM\Data\" />
+    <Folder Include="Areas\CRM\Models\" />
+    <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\licenses\" />
+    <Folder Include="wwwroot\UserFiles\" />
+    <Folder Include="wwwroot\RepositoriesFile\" />
+  </ItemGroup>
+
+</Project>

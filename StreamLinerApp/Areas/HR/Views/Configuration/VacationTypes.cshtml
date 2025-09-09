@@ -1,0 +1,41 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRVacationType>
+
+@{
+    ViewData["Title"] = "Leave Type";
+    
+}
+
+<partial name="_ConfigurationMenu" />
+
+<br />
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateVacationType">     <i class="fa fa-plus"></i> Create New  </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VacationTypeName)
+            </th>
+
+            <th style="width:200px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VacationTypeName)
+                </td>
+
+                <td>
+                    <a class="btn btn-info" asp-action="EditVacationType" asp-route-id="@item.VacationTypeId"><i class="fa fa-eye"></i></a> |
+                    <a class="btn btn-danger" asp-action="DeleteVacationType" asp-route-id="@item.VacationTypeId"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

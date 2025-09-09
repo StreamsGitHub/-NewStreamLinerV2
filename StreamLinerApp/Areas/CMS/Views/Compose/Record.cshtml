@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Record ";
+}
+
+
+
+
+<partial name="_CMSComposeNav" />
+<hr />
+<div class="row">
+    <div class="col-md-4 p-3 ">
+        <button id="startBtn" class="btn btn-outline-info"><i class="fa fa-circle text-danger"></i> Start Recording</button>
+        <button id="stopBtn" disabled class="btn btn-outline-info"><i class="fa fa-stop text-secondary"></i> Stop Recording</button>
+
+    </div>
+    <div class="col-md-8 p-1">
+        <audio id="audioPlayback" controls style="display:none;"></audio>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 1</p>
+        </div>
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 2</p>
+        </div>
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 3</p>
+        </div>
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 4</p>
+        </div>
+        <div class="col-md-2 text-center">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 5</p>
+        </div>
+        <div class="col-md-2 text-center">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 6</p>
+        </div>
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 1</p>
+        </div>
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 2</p>
+        </div>
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 3</p>
+        </div>
+        <div class="col-md-2 text-center p2">
+            <img src="~/img/ico/Audio.png" />
+            <p class="text-center">File Name 4</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let mediaRecorder;
+    let audioChunks = [];
+
+    document.getElementById("startBtn").onclick = async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = e => {
+            audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = async () => {
+            const blob = new Blob(audioChunks, { type: 'audio/webm' });
+            const formData = new FormData();
+            formData.append('audioFile', blob, 'recording.webm');
+
+            // Playback
+            const audioURL = URL.createObjectURL(blob);
+            document.getElementById("audioPlayback").src = audioURL;
+            document.getElementById("audioPlayback").style.display = "block";
+
+            // Upload to server
+            await fetch('/Audio/UploadAudio', {
+                method: 'POST',
+                body: formData
+            });
+
+            audioChunks = [];
+        };
+
+        mediaRecorder.start();
+        document.getElementById("startBtn").disabled = true;
+        document.getElementById("stopBtn").disabled = false;
+    };
+
+    document.getElementById("stopBtn").onclick = () => {
+        mediaRecorder.stop();
+        document.getElementById("startBtn").disabled = false;
+        document.getElementById("stopBtn").disabled = true;
+    };
+</script>
+<br />
+<br />
+

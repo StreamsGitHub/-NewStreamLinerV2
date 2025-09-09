@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream Liner - DMS</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/Style.css" />
+    <link href="~/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <style>
+     
+        .bglf {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0 !important;
+            border-bottom-width: 5px;
+            border-bottom-color: mediumpurple;
+            border-bottom-style: solid;
+            background-color: #01426a;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/sidebars.css">
+</head>
+<body>
+    <partial name="_HeaderApp" />
+   
+    <main>
+        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                @* 	<svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap" /></svg> *@
+                <span class="fs-5 fw-semibold" style="color:mediumpurple">	<i class="fa fa-folder-open-o"></i> CRM </span>
+            </a>
+
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1"><a asp-action="Index" asp-controller="Home" asp-area="CMS" class="btn   align-items-center"> <i class="fa fa-home" style="font-size:18px"></i> Home</a></li>
+                <li class="mb-1"><a asp-action="Index" asp-controller="Compose" asp-area="CMS" class="btn  align-items-center"> <i class="fa fa-file-text-o" style="font-size:18px"></i> Compose  </a></li>
+               @*  <li class="mb-1"><a asp-action="Index" asp-controller="MyRepository" asp-area="DMS" class="btn  align-items-center"> <i class="fa fa-hdd-o" style="font-size:18px"></i> My Repository  </a></li> *@
+                <li class="mb-1"><a asp-action="Index" asp-controller="Folder" asp-area="CMS" class="btn  align-items-center"> <i class="fa fa-folder" style="font-size:18px"></i> My Folder  </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-controller="Inbound" asp-area="CMS" class="btn  align-items-center"> <i class="fa fa-inbox" style="font-size:18px"></i> Inbound  </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-controller="Outbound" asp-area="CMS" class="btn  align-items-center"> <i class="fa fa-send" style="font-size:18px"></i> Outbound  </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-controller="Decrees" asp-area="CMS" class="btn  align-items-center"> <i class="fa fa-file-text-o" style="font-size:18px"></i> Announcements & Decrees  </a></li>
+                <li class="mb-1"><a asp-action="Index" asp-controller="Recycle" asp-area="CMS" class="btn   align-items-center"> <i class="fa fa-trash" style="font-size:18px"></i>  Recycle Bin</a></li>
+
+            </ul>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="container">
+
+            @RenderBody()
+
+
+        </div>
+    </main>
+
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/sidebars.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<StreamLinerViewModelLayer.HRViewModel.DepartmentViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        string clr = "red";
+        string titel = "text-primary";
+        string main = "Main";
+        @if (item.ParentId > 0)
+        {
+            titel = "text-warning";
+            main = "";
+        }
+
+        @if(item.EmployeeCount == 0)
+        {
+            clr = "red";
+        }
+        else if(item.EmployeeCount > 0 )
+        {
+            clr = "green";
+        }
+       
+       
+        <div class="col-md-4" style="padding:15px;">
+            <div class="card">
+                <div class="card-header @titel">
+                    @item.DepartmentName
+                </div>
+                <div calss="card-body" style="padding:15px;">
+                    <div> <i class="fa fa-square" style="color:@clr ;"></i> @item.ParentName @main</div>
+                    <br>
+                    <div>
+                        @if (@item.EmployeeCount == 0)
+                        {
+                            <a asp-controller="Employees" asp-action="Department" asp-route-id="@item.DepartmentId" class="btn btn-success">
+                                @item.EmployeeCount No staff
+                            </a>
+                        }
+                        else if (@item.EmployeeCount > 0)
+                        {
+                            <a asp-controller="Employees" asp-action="Department" asp-route-id="@item.DepartmentId" class="btn btn-success">
+                                @item.EmployeeCount Employee
+                            </a>
+                        }
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,78 @@
+﻿@model StreamLinerViewModelLayer.HRViewModel.CheckOutViewModel
+
+@{
+    ViewData["Title"] = "CheckOut";
+    
+}
+<partial name="_Attend" />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CheckOut">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="EmployeeId" class="control-label"></label>
+                        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.PartnerId">
+                            <option value="0" data=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="CheckOut" class="control-label"></label>
+                        <input asp-for="CheckOut" class="form-control" value="@DateTime.Now" />
+                        <span asp-validation-for="CheckOut" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-label text-white">.</label>
+                        <input type="submit" value="Check OUT" class="btn btn-danger  form-control" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Employee Name
+                </th>
+                <th>
+                    Check  
+                </th>
+                
+                <th>
+                    By
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.HRAttendances)
+            {
+                string url = "https://www.google.com/maps/place/" + item.INLatitude + "+," + item.INLongitude;
+
+                <tr>
+                    <td>
+                        @item.Partner.FullName
+                    </td>
+                    <td>
+                        @Convert.ToDateTime(item.CheckIn).ToShortTimeString()
+                    </td>
+                   
+                    <td>
+                        <a class="btn btn-success btn-lg" href="@url" target="_blank">
+                            <i class="@item.icon"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

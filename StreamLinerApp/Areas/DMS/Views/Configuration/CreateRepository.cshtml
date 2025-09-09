@@ -1,0 +1,79 @@
+﻿@model StreamLinerViewModelLayer.ModelDTO.CreateRepositoryDto
+
+@{
+    ViewData["Title"] = " DMS Configuration ";
+}
+<br />
+<partial name="_ConfigurationDMS" />
+<br />
+<div class="row container">
+
+    <div class="col-md-4">
+        <form asp-action="CreateRepository" method="post">
+            <div class="form-group">
+                <label asp-for="RepositoryName" class="control-label"></label>
+                <input asp-for="RepositoryName" class="form-control" value="@ViewData["RepoCount"]" />
+                <span asp-validation-for="RepositoryName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" value="Description Of @ViewData["RepoCount"] " />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="OwnerId" class="control-label"></label>
+                <select asp-for="OwnerId" class="form-select select2" asp-items="@ViewBag.UserId">
+                    <option value="0">-- Select Owner --</option>
+                </select>
+                <span asp-validation-for="OwnerId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="SizeInMB" class="control-label"></label>
+                        <input asp-for="SizeInMB" class="form-control text-center" value="1024" />
+                        <span asp-validation-for="SizeInMB" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="IsPrivate" class="control-label"></label>
+                        <select asp-for="IsPrivate" onchange="isprivate()" class="form-select select2" asp-items="@ViewBag.ownerid">
+                            <option value="false"> Is Public </option>
+                            <option value="true"> Is Private </option>
+
+                        </select>
+                        <span asp-validation-for="IsPrivate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+           
+            <br />
+            <div class="form-group">
+                <input asp-for="License" id="License" class="form-control text-center" placeholder="Enter License Code" hidden="hidden" />
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Repositories" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function isprivate() {
+        var isprivate = document.getElementById("IsPrivate").value;
+        if (isprivate == "1") {
+            document.getElementById("License").removeAttribute("hidden");
+        }
+        else {
+            document.getElementById("License").setAttribute("hidden", "hidden");
+        }
+    }
+</script>

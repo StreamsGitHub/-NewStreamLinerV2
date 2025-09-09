@@ -1,0 +1,27 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRAllowanceType
+
+@{
+    ViewData["Title"] = "Delete";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+
+<div>
+ 
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HRAllowanceTypeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HRAllowanceTypeName)
+        </dd>
+        
+    </dl>
+    <br />
+    <form asp-action="DeleteAllowanceType">
+        <input type="hidden" asp-for="HRAllowanceTypeId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />  |
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </form>
+</div>

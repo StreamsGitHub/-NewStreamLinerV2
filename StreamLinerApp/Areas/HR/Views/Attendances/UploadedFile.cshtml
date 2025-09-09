@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.FingerPrint>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_Attend" />
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    AC-No
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Time
+                </th>
+                <th>
+                    State
+                </th>
+                <th>
+                    New State
+                </th>
+                <th>
+                    Exception
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @item.ACNo
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @Convert.ToDateTime(item.DateAndTime).ToString("g")
+
+                    </td>
+                    <td>
+                        @item.Status
+                    </td>
+                    <td>
+                        @item.NewState
+                    </td>
+                    <td>
+                        @item.Exception
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

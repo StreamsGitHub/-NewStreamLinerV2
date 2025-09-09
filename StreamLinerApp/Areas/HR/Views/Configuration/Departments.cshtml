@@ -1,0 +1,45 @@
+﻿@model IEnumerable<StreamLinerViewModelLayer.HRViewModel.DepartmentViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+<p>
+    <a class="btn btn-primary" asp-action="CreateDepartment">    <i class="fa fa-plus"></i> Create New  </a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentDesc)
+            </th>
+            
+            <th style="width:200px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentDesc)
+                </td>
+               
+                <td>
+                    <a asp-action="EditDepartment" class="btn btn-info" asp-route-id="@item.DepartmentId"><i class="fa fa-eye"></i></a> |
+                    <a asp-action="DeleteDepartment" class="btn btn-danger" asp-route-id="@item.DepartmentId"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

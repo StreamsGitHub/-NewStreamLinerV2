@@ -1,0 +1,26 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRMissionType
+
+@{
+    ViewData["Title"] = "Edit Errand";
+    
+}
+<partial name="_ConfigurationMenu" />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditMissionType">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HRMissionTypeId" />
+            <div class="form-group">
+                <label asp-for="HRMissionTypeName" class="control-label"></label>
+                <input asp-for="HRMissionTypeName" class="form-control" />
+                <span asp-validation-for="HRMissionTypeName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" /> |
+                <a asp-action="MissionTypes" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

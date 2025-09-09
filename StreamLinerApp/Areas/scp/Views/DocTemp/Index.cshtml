@@ -1,0 +1,73 @@
+﻿@model IEnumerable<StreamLinerViewModelLayer.ModelDTO.DocTemplateDto>
+
+@{
+    ViewData["Title"] = "Document Template";
+}
+
+<br />
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newtemplate">
+    <i class="fa fa-plus"></i> Create Template
+</button>
+<div class="modal" id="newtemplate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-action="CreateTemplate">
+
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="TemplateName" name="TemplateName" placeholder="Enter Template Name" required>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadfile">
+    <i class="fa fa-upload"></i> Upload Template
+</button>
+<div class="modal" id="uploadfile">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-action="UploadFile" enctype="multipart/form-data">
+                <input type="text" value="4D4D35ED-E381-4F17-9B0C-20D6698A8A07" class="form-control" id="ParentId" name="ParentId" hidden="hidden">
+                <div class="modal-body">
+                    <br />
+                    <div class="mb-3">
+                        <label for="title" class="form-label">File Name</label>
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Enter Name" required>
+                    </div>
+                    <br />
+                    <input type="file" id="document" name="document" required />
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-12 p-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Template Name</th>
+                    <th style="width:150px;"> Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.TemplateName</td>
+                        <td>
+                            <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

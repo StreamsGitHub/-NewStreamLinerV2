@@ -1,0 +1,47 @@
+﻿@model IEnumerable<StreamLinerEntitiesLayer.HREntities.HRVacationRule>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<partial name="_ConfigurationMenu" />
+<br />
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateRule">  <i class="fa fa-plus"></i> Create New </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VacationRuleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VacationDesc)
+            </th>
+
+            <th style="width:200px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VacationRuleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VacationDesc)
+                </td>
+
+                <td>
+                    <a class="btn btn-success" asp-action="Rule" asp-route-id="@item.VacationRuleId"><i class="fa fa-edit"></i></a>|
+                    <a class="btn btn-info" asp-action="EditRule" asp-route-id="@item.VacationRuleId"><i class="fa fa-eye"></i></a> |
+                    <a class="btn btn-danger" asp-action="DeleteRule" asp-route-id="@item.VacationRuleId"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

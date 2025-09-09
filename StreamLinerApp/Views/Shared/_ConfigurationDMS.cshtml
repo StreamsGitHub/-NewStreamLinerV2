@@ -1,0 +1,32 @@
+﻿
+<div class="card">
+ <div class="card-header">
+        @ViewData["Title"]  @ViewData["Action"]
+ </div>
+    <div class="card-body">
+
+        <a asp-action="Repositories" class="btn btn-app">
+            <i class="fa fa-hdd-o"></i> Repositories
+        </a>
+        <a asp-action="AccessRights" class="btn btn-app">
+            <i class="fa fa-check-square-o"></i> Access Right
+        </a>
+    
+        <a asp-action="Quota" class="btn btn-app">
+            <i class="fa fa-database"></i> Quota
+        </a>
+        <a asp-action="Storge" class="btn btn-app">
+            <i class="fa fa-cloud"></i> Storge
+        </a>
+      
+        <a asp-action="Spam" class="btn btn-app">
+            <i class="fa fa-warning"></i>   Spam
+        </a>
+
+        <a asp-action="Spam" class="btn btn-app">
+            <i class="fa fa-trash-o"></i>   File Deleted
+        </a>
+        
+    </div>
+  
+</div>

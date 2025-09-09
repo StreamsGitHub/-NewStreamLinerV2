@@ -1,0 +1,52 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRAdvancePayment
+
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HRAdvancePaymentId"/>
+            <div class="form-group">
+                <label asp-for="PartnerId" class="control-label"></label>
+                <select asp-for="PartnerId" class="form-control select2" asp-items="ViewBag.PartnerId">
+                    <option value="0" data=""></option>
+                </select>
+                <span asp-validation-for="PartnerId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label  asp-for="AdvancePaymentValue" class="control-label"></label>
+                        <input asp-for="AdvancePaymentValue" class="form-control text-center" type="number"  />
+                        <span asp-validation-for="AdvancePaymentValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="AdvancePaymentDate" class="control-label"></label>
+                        <input asp-for="AdvancePaymentDate" class="form-control" type="date" />
+                        <span asp-validation-for="AdvancePaymentDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />|
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

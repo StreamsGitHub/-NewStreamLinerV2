@@ -1,0 +1,93 @@
+﻿ @model StreamLinerViewModelLayer.ModelDTO.FieldDTO
+
+
+@{
+    ViewData["Title"] = "Fields";
+}
+<br />
+<div class="container">
+    <h3> @ViewData["controller"] -   @ViewData["action"]   </h3>
+</div>
+<hr />
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <input type="hidden" asp-for="FieldId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="FieldName" class="form-label"></label>
+        <input disabled asp-for="FieldName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="TypeName" class="form-label"></label>
+        <select disabled asp-for="TypeId" class="form-select" asp-items="ViewBag.TypeId">
+            <option  value="">--Select Type--</option>
+
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Placeholder" class="form-label"></label>
+        <input disabled asp-for="Placeholder" type="text" class="form-control">
+    </div>
+
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                   Delete
+                </button>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+            <form method="post" asp-action="Delete">
+
+                <input type="hidden" asp-for="FieldId" />
+                <div class="modal" id="deleteModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete Confirmed</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                Are you sure you want to delete this field
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-danger" name="name" value="Delete" />
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+     
+    </form>
+</div>
+</div>
+</div>
+
+@* <script>
+    function confirmDelete(id) {
+        if (confirm("Are you sure you want to delete this field?")) {
+            fetch('/Field/DeleteConfirmed?id=' + id, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Deleted  successfully!");
+                    location.reload(); 
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+</script> *@
+

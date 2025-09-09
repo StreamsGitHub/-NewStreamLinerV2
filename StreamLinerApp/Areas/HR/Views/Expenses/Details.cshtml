@@ -1,0 +1,66 @@
+﻿@model StreamLinerEntitiesLayer.HREntities.HRBenefits
+
+@{
+    ViewData["Title"] = "Details";
+    
+}
+
+
+<div>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PartnerId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Partner.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManagerId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Partner.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BenefitDays)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BenefitDays)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BenefitDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BenefitDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BenefitValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BenefitValue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BenefitHour)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BenefitHour)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MonthCode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MonthCode)
+        </dd>
+       
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-success" asp-route-id="@Model?.HRBenefitsId"><i class="fa fa-eye"></i></a> |
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</div>
